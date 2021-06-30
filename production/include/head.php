@@ -7,6 +7,12 @@
 	<link rel="icon" href="images/building.ico" type="image/ico" />
 
     <title>SPK | Supllier </title>
+    <style type="text/css">
+   .left    { text-align: left;}
+   .right   { text-align: right;}
+   .center  { text-align: center;}
+   .justify { text-align: justify;}
+</style>
 
     <!-- Bootstrap -->
     <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">

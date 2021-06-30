@@ -13,7 +13,7 @@ if (isset($_POST['ubah'])) {
 
   if ($query) {
     echo "<script>alert('Ubah Data Dengan ID = ".$id_kriteria." Berhasil') </script>";
-    echo "<script>window.location.href = \"tables_kriteria.php\" </script>";
+    echo "<script>window.location.href = \"data_kriteria.php\" </script>";
   } else {
     echo "Maaf Tidak Dapat Mengubah Data !";
   }

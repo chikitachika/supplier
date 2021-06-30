@@ -5,7 +5,7 @@ session_start();
 include "koneksi.php";
 
 //pemberian kode id secara otomatis
-$carikode = mysqli_query($koneksi, "SELECT id_kriteria FROM tb_kriteria") or die(mysql_error());
+$carikode = mysqli_query($koneksi, "SELECT id_data FROM tb_alternatif") or die(mysql_error());
 $datakode = mysqli_fetch_array($carikode);
 $jumlah_data = mysqli_num_rows($carikode);
 
@@ -13,9 +13,9 @@ if ($datakode) {
   $nilaikode = substr($jumlah_data[0], 1);
   $kode = (int) $nilaikode;
   $kode = $jumlah_data + 1;
-  $kode_otomatis = "krt-".str_pad($kode, 3, "0", STR_PAD_LEFT);
+  $kode_otomatis = "alt-".str_pad($kode, 2, "0", STR_PAD_LEFT);
 } else {
-  $kode_otomatis = "krt-001";
+  $kode_otomatis = "alt-01";
 }
  ?>
 
@@ -108,26 +108,20 @@ include ('include/head.php')
 								</div>
 								<div class="x_content">
 									<br />
-									<form action="kriteria_tambah.php" method="post" id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
+									<form action="alternatif_tambah.php" method="post" id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
 
 										<div class="item form-group">
-											<label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">ID Kriteria <span class="required">*</span>
+											<label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">ID Alternatif <span class="required">*</span>
 											</label>
 											<div class="col-md-6 col-sm-6 ">
-											<input class="form-control" type="text" name="inpidkrt" value="<?php echo $kode_otomatis; ?>" readonly>
+											<input class="form-control" type="text" name="inpidalt" value="<?php echo $kode_otomatis; ?>" readonly>
 											</div>
 										</div>
+										
 										<div class="item form-group">
-											<label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Kode Kriteria <span class="required">*</span>
-											</label>
+											<label for="middle-name" class="col-form-label col-md-3 col-sm-3 label-align">Nama Alternatif</label>
 											<div class="col-md-6 col-sm-6 ">
-											<input class="form-control" type="text" name="inpkdkrt" value="">
-											</div>
-										</div>
-										<div class="item form-group">
-											<label for="middle-name" class="col-form-label col-md-3 col-sm-3 label-align">Nama Kriteria</label>
-											<div class="col-md-6 col-sm-6 ">
-											<input class="form-control" type="text" name="inpnmkrt" value="">
+											<input class="form-control" type="text" name="inpnmalt" value="">
 											</div>
 										</div>
 										<div class="ln_solid"></div>
@@ -162,17 +156,16 @@ include ('include/head.php')
       <?php
     //proses tambah data
     if (isset($_POST['simpan'])) {
-      $id_kriteria = $_POST['inpidkrt'];
-      $kd_kriteria = $_POST['inpkdkrt'];
-      $nm_kriteria = $_POST['inpnmkrt'];
+      $id_data = $_POST['inpidalt'];
+      $nm_alternatif = $_POST['inpnmalt'];
 
-      $sql   = "INSERT INTO tb_kriteria (id_kriteria, kd_kriteria, nama_kriteria)
-                VALUES ('$id_kriteria', '$kd_kriteria', '$nm_kriteria')";
+      $sql   = "INSERT INTO tb_alternatif (id_data,nama_alternatif)
+                VALUES ('$id_data', '$nm_alternatif')";
       $query = mysqli_query($koneksi, $sql);
 
       if ($query) {
         echo "<script>window.alert('Kriteria Berhasil ditambahkan');
-              window.location=(href='data_kriteria.php')</script>";
+              window.location=(href='data_alternatif.php')</script>";
       }
     }
      ?>

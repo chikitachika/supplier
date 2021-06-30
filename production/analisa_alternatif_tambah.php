@@ -4,8 +4,8 @@ error_reporting(0);
 session_start();
 include "koneksi.php";
 
-//pemberian kode id secara otomatis
-$carikode = mysqli_query($koneksi, "SELECT id_kriteria FROM tb_perb_kriteria") or die(mysql_error());
+///pemberian kode id secara otomatis
+$carikode = mysqli_query($koneksi, "SELECT id_alternatif FROM tb_perb_alternatif") or die(mysql_error());
 $datakode = mysqli_fetch_array($carikode);
 $jumlah_data = mysqli_num_rows($carikode);
 
@@ -13,12 +13,11 @@ if ($datakode) {
   $nilaikode = substr($jumlah_data[0], 1);
   $kode = (int) $nilaikode;
   $kode = $jumlah_data + 1;
-  $kode_otomatis = "B".str_pad($kode, 2, "0", STR_PAD_LEFT);
+  $kode_otomatis = "A".str_pad($kode, 2, "0", STR_PAD_LEFT);
 } else {
-  $kode_otomatis = "B01";
+  $kode_otomatis = "A01";
 }
  ?>
-
 
 
 <!DOCTYPE html>
@@ -116,7 +115,7 @@ if ($datakode) {
 						<div class="col-md-12 col-sm-12 ">
 							<div class="x_panel">
 								<div class="x_title">
-									<h2>Form Design <small>different form elements</small></h2>
+									<h2>Analisa Alternatif </h2>
 									<ul class="nav navbar-right panel_toolbox">
 										<li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
 										</li>
@@ -136,34 +135,35 @@ if ($datakode) {
 								</div>
 								<div class="x_content">
 									<br />
-									<form action="analisa_kriteria_tambah.php" method="post" id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
+									<form action="analisa_alternatif_tambah.php" method="post" id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
 
 										<div class="item form-group">
 											<label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">ID Perbandingan <span class="required">*</span>
 											</label>
 											<div class="col-md-6 col-sm-6 ">
-											<input class="form-control" type="text" name="inpidkrt" value="<?php echo $kode_otomatis; ?> " readonly>
+											<input class="form-control" type="text" name="inpidalter" value="<?php echo $kode_otomatis; ?> " readonly>
 											</div>
 										</div>
 										<div class="item form-group">
 											<label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Nama Kriteria <span class="required">*</span>
 											</label>
 											<div class="col-md-6 col-sm-6 ">
-											<select class="form-control" name="inpnmkrt">
-                    <option>- Pilih Nama Kriteria -</option>
+											<select class="form-control" name="inpnmalter">
+                    <option>- Pilih Nama Alternatif -</option>
                     <?php
-                    $hasil = mysqli_query($koneksi, "SELECT * FROM tb_kriteria");
+                    $hasil = mysqli_query($koneksi, "SELECT * FROM tb_alternatif");
                     while ($row = mysqli_fetch_array($hasil)) {
-                      echo "<option value='".$row['nama_kriteria']."'>".$row['nama_kriteria']."</option>";
+                      echo "<option value='".$row['nama_alternatif']."'>".$row['nama_alternatif']."</option>";
                     }
                      ?>
+                  </select>
                   </select>
 											</div>
 										</div>
 										<div class="item form-group">
 											<label for="middle-name" class="col-form-label col-md-3 col-sm-3 label-align">Perbandingan</label>
 											<div class="col-md-6 col-sm-6 ">
-											<select class="form-control" name="inpperb">
+                      <select class="form-control" name="inpperb">
                     <option>- Pilih Perbandingan -</option>
                     <option value="1">1. Sama penting dengan</option>
                     <option value="2">2. Mendekati sedikit lebih penting dari</option>
@@ -178,15 +178,15 @@ if ($datakode) {
 											</div>
 										</div>
                     <div class="item form-group">
-											<label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Nama Kriteria <span class="required">*</span>
+											<label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Nama Alternatif <span class="required">*</span>
 											</label>
 											<div class="col-md-6 col-sm-6 ">
-											<select class="form-control" name="inpnmkrt2">
-                    <option>- Pilih Nama Kriteria -</option>
+											<select class="form-control" name="inpnmalter2">
+                    <option>- Pilih Nama Alternatif -</option>
                     <?php
-                    $hasil = mysqli_query($koneksi, "SELECT * FROM tb_kriteria");
+                    $hasil = mysqli_query($koneksi, "SELECT * FROM tb_alternatif");
                     while ($row = mysqli_fetch_array($hasil)) {
-                      echo "<option value='".$row['nama_kriteria']."'>".$row['nama_kriteria']."</option>";
+                      echo "<option value='".$row['nama_alternatif']."'>".$row['nama_alternatif']."</option>";
                     }
                      ?>
                   </select>
@@ -225,10 +225,10 @@ if ($datakode) {
       <?php
     //proses tambah data
     if (isset($_POST['simpan'])) {
-      $id_kriteria = $_POST['inpidkrt'];
+      $id_alter    = $_POST['inpidalter'];
       $nm_banding  = $_POST['inpperb'];
-      $kriteria1   = $_POST['inpnmkrt'];
-      $kriteria2   = $_POST['inpnmkrt2'];
+      $alternatif1 = $_POST['inpnmalter'];
+      $alternatif2 = $_POST['inpnmalter2'];
 
       if ($nm_banding==1) {
         $nilai = 1;
@@ -259,13 +259,13 @@ if ($datakode) {
         $nama = "9. Mutlak sangat penting dari";
       }
 
-      $sql   = "INSERT INTO tb_perb_kriteria (id_kriteria, nilai_banding, kriteria1, nm_banding, kriteria2)
-                VALUES ('$id_kriteria', '$nilai', '$kriteria1', '$nama', '$kriteria2')";
+      $sql   = "INSERT INTO tb_perb_alternatif (id_alternatif, nm_banding, nb_db, alternatif1, alternatif2)
+                VALUES ('$id_alter', '$nama', '$nilai', '$alternatif1', '$alternatif2')";
       $query = mysqli_query($koneksi, $sql);
 
       if ($query) {
-        echo "<script>window.alert('Kriteria Berhasil ditambahkan');
-              window.location=(href='analisa_kriteria.php')</script>";
+        echo "<script>window.alert('Alternatif Berhasil ditambahkan');
+              window.location=(href='analisa_alternatif.php')</script>";
       }
     }
      ?>
