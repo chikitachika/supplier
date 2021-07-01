@@ -35,7 +35,7 @@
                   <li><a><i class="fa fa-check-circle-o"></i> Hasil <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="hasil_kriteria.php">Hasil Kriteria</a></li>
-                      <li><a href="form_advanced.html">Hasil alternatif</a></li>
+                      <li><a href="hasil_alternatif.php">Hasil alternatif</a></li>
                     </ul>
                   </li>
                 </ul>

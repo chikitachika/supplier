@@ -73,22 +73,22 @@ include ('include/head.php')
 			$k4 = $b4['nilai_banding'];
 
 			// perhitungan baris dan kolom
-			// baris Umur
+			// baris harga
 			$bk11 = $k1;
 			$bk12 = $nm_banding1;
 			$bk13 = $nm_banding2;
 			$bk14 = $nm_banding3;
-			// baris ipk
+			// baris kualitas
 			$bk21 = round($k2/$nm_banding1,2);
 			$bk22 = $k2;
 			$bk23 = $nm_banding4;
 			$bk24 = $nm_banding5;
-			// baris penghasilan ortu
+			// baris lokasi
 			$bk31 = round($k3/$nm_banding2,2);
 			$bk32 = round($k3/$nm_banding4,2);
 			$bk33 = $k3;
 			$bk34 = $nm_banding6;
-			// baris semester
+			// baris fleksibilitas
 			$bk41 = round($k4/$nm_banding3,2);
 			$bk42 = round($k4/$nm_banding5,2);
 			$bk43 = round($k4/$nm_banding6,2);
@@ -228,28 +228,28 @@ include ('include/head.php')
 
     <tbody>
     <tr align="center">
-                    <th><?php echo $b1['kriteria1']; ?></th> <!-- Membaca baris Umur -->
+                    <th><?php echo $b1['kriteria1']; ?></th> <!-- Membaca baris harga -->
                     <td><?php echo $bk11; ?></td>
                     <th><?php echo $bk12; ?></th>
                     <th><?php echo $bk13; ?></th>
                     <th><?php echo $bk14; ?></th>
                   </tr>
                   <tr align="center">
-                    <th><?php echo $b2['kriteria1']; ?></th> <!-- Membaca baris IPK -->
+                    <th><?php echo $b2['kriteria1']; ?></th> <!-- Membaca baris kualitas -->
                     <td><?php echo $bk21; ?></td>
                     <td><?php echo $bk22; ?></td>
                     <td><?php echo $bk23; ?></td>
                     <td><?php echo $bk24; ?></td>
                   </tr>
                   <tr align="center">
-                    <th><?php echo $b3['kriteria1']; ?></th> <!-- membaca baris peng Ortu -->
+                    <th><?php echo $b3['kriteria1']; ?></th> <!-- membaca baris lokasi -->
                     <td><?php echo $bk31; ?></td>
                     <td><?php echo $bk32; ?></td>
                     <td><?php echo $bk33; ?></td>
                     <td><?php echo $bk34; ?></td>
                   </tr>
                   <tr align="center">
-                    <th><?php echo $b4['kriteria1']; ?></th> <!-- membaca Semester -->
+                    <th><?php echo $b4['kriteria1']; ?></th> <!-- membaca fleksibilitas -->
                     <td><?php echo $bk41; ?></td>
                     <td><?php echo $bk42; ?></td>
                     <td><?php echo $bk43; ?></td>
@@ -302,7 +302,7 @@ include ('include/head.php')
     <th><?php echo $rata26; ?></th>
     </tr>
     <tr align="center">
-    <th><?php echo $b3['kriteria1']; ?></th> <!-- baris peng fleksibilitas -->
+    <th><?php echo $b3['kriteria1']; ?></th> <!-- baris lokasi -->
     <td><?php echo $pw31; ?></td>
     <td><?php echo $pw32; ?></td>
     <td><?php echo $pw33; ?></td>
@@ -311,7 +311,7 @@ include ('include/head.php')
     <th><?php echo $rata36; ?></th>
     </tr>
     <tr align="center">
-    <th><?php echo $b4['kriteria1']; ?></th> <!-- baris lokasi -->
+    <th><?php echo $b4['kriteria1']; ?></th> <!-- baris fleksibilitas -->
     <td><?php echo $pw41; ?></td>
     <td><?php echo $pw42; ?></td>
     <td><?php echo $pw43; ?></td>

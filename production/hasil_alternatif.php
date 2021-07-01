@@ -47,15 +47,17 @@ include ('include/head.php')
         <!-- /top navigation -->
 
         <?php
-    error_reporting(E_ALL^(E_NOTICE|E_WARNING));
-    $query1 = mysqli_query($koneksi, "SELECT * FROM tb_perb_kriteria where id_kriteria='B01'");
-    $query2 = mysqli_query($koneksi, "SELECT * FROM tb_perb_kriteria where id_kriteria='B02'");
-    $query3 = mysqli_query($koneksi, "SELECT * FROM tb_perb_kriteria where id_kriteria='B03'");
-    $query4 = mysqli_query($koneksi, "SELECT * FROM tb_perb_kriteria where id_kriteria='B04'");
-    $b1 = mysqli_fetch_array($query1);
-    $b2 = mysqli_fetch_array($query2);
-    $b3 = mysqli_fetch_array($query3);
-    $b4 = mysqli_fetch_array($query4);
+      error_reporting(E_ALL^(E_NOTICE|E_WARNING));
+      $query1 = mysqli_query($koneksi, "SELECT * FROM tb_perb_alternatif where id_alternatif='A01'");
+      $query2 = mysqli_query($koneksi, "SELECT * FROM tb_perb_alternatif where id_alternatif='A02'");
+      $query3 = mysqli_query($koneksi, "SELECT * FROM tb_perb_alternatif where id_alternatif='A03'");
+      $query4 = mysqli_query($koneksi, "SELECT * FROM tb_perb_alternatif where id_alternatif='A04'");
+      $query5 = mysqli_query($koneksi, "SELECT * FROM tb_perb_alternatif where id_alternatif='A05'");
+      $b1 = mysqli_fetch_array($query1);
+      $b2 = mysqli_fetch_array($query2);
+      $b3 = mysqli_fetch_array($query3);
+      $b4 = mysqli_fetch_array($query4);
+      $b5 = mysqli_fetch_array($query5);
     ?>
 
 
@@ -64,7 +66,7 @@ include ('include/head.php')
           <div class="">
             <div class="page-title">
               <div class="title_left">
-                <h3><i class="fa fa-book"></i> Kriteria </h3>
+                <h3><i class="fa fa-book"></i> Alternatif </h3>
               </div>
 
               <div class="title_right">
@@ -84,7 +86,7 @@ include ('include/head.php')
               <div class="col-md-12 col-sm-12 ">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>Hasil Kriteria</h2>
+                    <h2>Hasil Hitung Alternatif</h2>
                     
                     <div class="clearfix"></div>
                   </div>
@@ -96,132 +98,746 @@ include ('include/head.php')
 </br>
 
 <div class="table-responsive">
-<form action="hasil_kriteria_akhir.php" method="post">
+<form action="hasil_alternatif_akhir.php" method="post">
   <table class="table table-striped jambo_table bulk_action">
     <thead>
-      <tr class="headings">
-        <th>Kriteria</th>
-        <th scope="col"><?php echo $b1['kriteria1']; ?></th>
-        <th scope="col"><?php echo $b2['kriteria1']; ?></th>
-        <th scope="col"><?php echo $b3['kriteria1']; ?></th>
-        <th scope="col"><?php echo $b4['kriteria1']; ?></th>
-        </th>
-        <th class="bulk-actions" colspan="7">
-          <a class="antoo" style="color:#fff; font-weight:500;">Bulk Actions ( <span class="action-cnt"> </span> ) <i class="fa fa-chevron-down"></i></a>
-        </th>
-      </tr>
-    </thead>
+    <tr align="center">
+                              <th>Harga</th>
+                              <td><?php echo $b1['alternatif1']; ?></td>
+                              <td><?php echo $b2['alternatif1']; ?></td>
+                              <td><?php echo $b3['alternatif1']; ?></td>
+                              <td><?php echo $b4['alternatif1']; ?></td>
+                              <td><?php echo $b5['alternatif1']; ?></td>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr align="center">
+                              <td><?php echo $b1['alternatif1']; ?></td>
+                              <td><?php echo $b1['nb_db']; ?></td>
+                              <td>
+                                <select class="form-control" name="nb1">
+                                <option></option>
+                                <option value="1">1. Sama penting dengan</option>
+                                <option value="2">2. Mendekati sedikit lebih penting dari</option>
+                                <option value="3">3. Sedikit lebih penting dari</option>
+                                <option value="4">4. Mendekati lebih penting dari</option>
+                                <option value="5">5. Lebih penting dari</option>
+                                <option value="6">6. Mendekati sangat penting dari</option>
+                                <option value="7">7. Sangat penting dari</option>
+                                <option value="8">8. Mendekati mutlak dari</option>
+                                <option value="9">9. Mutlak sangat penting dari</option>
+                              </select>
+                              </td>
+                              <td>
+                                <select class="form-control" name="nb2">
+                                <option></option>
+                                <option value="1">1. Sama penting dengan</option>
+                                <option value="2">2. Mendekati sedikit lebih penting dari</option>
+                                <option value="3">3. Sedikit lebih penting dari</option>
+                                <option value="4">4. Mendekati lebih penting dari</option>
+                                <option value="5">5. Lebih penting dari</option>
+                                <option value="6">6. Mendekati sangat penting dari</option>
+                                <option value="7">7. Sangat penting dari</option>
+                                <option value="8">8. Mendekati mutlak dari</option>
+                                <option value="9">9. Mutlak sangat penting dari</option>
+                              </select>
+                              </td>
+                              <td>
+                                <select class="form-control" name="nb3">
+                                <option></option>
+                                <option value="1">1. Sama penting dengan</option>
+                                <option value="2">2. Mendekati sedikit lebih penting dari</option>
+                                <option value="3">3. Sedikit lebih penting dari</option>
+                                <option value="4">4. Mendekati lebih penting dari</option>
+                                <option value="5">5. Lebih penting dari</option>
+                                <option value="6">6. Mendekati sangat penting dari</option>
+                                <option value="7">7. Sangat penting dari</option>
+                                <option value="8">8. Mendekati mutlak dari</option>
+                                <option value="9">9. Mutlak sangat penting dari</option>
+                              </select>
+                              </td>
+                              <td>
+                                <select class="form-control" name="nb4">
+                                <option></option>
+                                <option value="1">1. Sama penting dengan</option>
+                                <option value="2">2. Mendekati sedikit lebih penting dari</option>
+                                <option value="3">3. Sedikit lebih penting dari</option>
+                                <option value="4">4. Mendekati lebih penting dari</option>
+                                <option value="5">5. Lebih penting dari</option>
+                                <option value="6">6. Mendekati sangat penting dari</option>
+                                <option value="7">7. Sangat penting dari</option>
+                                <option value="8">8. Mendekati mutlak dari</option>
+                                <option value="9">9. Mutlak sangat penting dari</option>
+                              </select>
+                              </td>
+                            </tr>
+                            <tr align="center">
+                              <td><?php echo $b2['alternatif1']; ?></td>
+                              <td><font color="red">0</font></td>
+                              <td><?php echo $b2['nb_db']; ?></td>
+                              <td>
+                                <select class="form-control" name="nb5">
+                                <option></option>
+                                <option value="1">1. Sama penting dengan</option>
+                                <option value="2">2. Mendekati sedikit lebih penting dari</option>
+                                <option value="3">3. Sedikit lebih penting dari</option>
+                                <option value="4">4. Mendekati lebih penting dari</option>
+                                <option value="5">5. Lebih penting dari</option>
+                                <option value="6">6. Mendekati sangat penting dari</option>
+                                <option value="7">7. Sangat penting dari</option>
+                                <option value="8">8. Mendekati mutlak dari</option>
+                                <option value="9">9. Mutlak sangat penting dari</option>
+                              </select>
+                              </td>
+                              <td>
+                                <select class="form-control" name="nb6">
+                                <option></option>
+                                <option value="1">1. Sama penting dengan</option>
+                                <option value="2">2. Mendekati sedikit lebih penting dari</option>
+                                <option value="3">3. Sedikit lebih penting dari</option>
+                                <option value="4">4. Mendekati lebih penting dari</option>
+                                <option value="5">5. Lebih penting dari</option>
+                                <option value="6">6. Mendekati sangat penting dari</option>
+                                <option value="7">7. Sangat penting dari</option>
+                                <option value="8">8. Mendekati mutlak dari</option>
+                                <option value="9">9. Mutlak sangat penting dari</option>
+                              </select>
+                              </td>
+                              <td>
+                                <select class="form-control" name="nb7">
+                                <option></option>
+                                <option value="1">1. Sama penting dengan</option>
+                                <option value="2">2. Mendekati sedikit lebih penting dari</option>
+                                <option value="3">3. Sedikit lebih penting dari</option>
+                                <option value="4">4. Mendekati lebih penting dari</option>
+                                <option value="5">5. Lebih penting dari</option>
+                                <option value="6">6. Mendekati sangat penting dari</option>
+                                <option value="7">7. Sangat penting dari</option>
+                                <option value="8">8. Mendekati mutlak dari</option>
+                                <option value="9">9. Mutlak sangat penting dari</option>
+                              </select>
+                              </td>
+                            </tr>
+                            <tr align="center">
+                              <td><?php echo $b3['alternatif1']; ?></td>
+                              <td><font color="red">0</font></td>
+                              <td><font color="red">0</font></td>
+                              <td><?php echo $b3['nb_db']; ?></td>
+                              <td>
+                                <select class="form-control" name="nb8">
+                                <option></option>
+                                <option value="1">1. Sama penting dengan</option>
+                                <option value="2">2. Mendekati sedikit lebih penting dari</option>
+                                <option value="3">3. Sedikit lebih penting dari</option>
+                                <option value="4">4. Mendekati lebih penting dari</option>
+                                <option value="5">5. Lebih penting dari</option>
+                                <option value="6">6. Mendekati sangat penting dari</option>
+                                <option value="7">7. Sangat penting dari</option>
+                                <option value="8">8. Mendekati mutlak dari</option>
+                                <option value="9">9. Mutlak sangat penting dari</option>
+                              </select>
+                              </td>
+                              <td>
+                                <select class="form-control" name="nb9">
+                                <option></option>
+                                <option value="1">1. Sama penting dengan</option>
+                                <option value="2">2. Mendekati sedikit lebih penting dari</option>
+                                <option value="3">3. Sedikit lebih penting dari</option>
+                                <option value="4">4. Mendekati lebih penting dari</option>
+                                <option value="5">5. Lebih penting dari</option>
+                                <option value="6">6. Mendekati sangat penting dari</option>
+                                <option value="7">7. Sangat penting dari</option>
+                                <option value="8">8. Mendekati mutlak dari</option>
+                                <option value="9">9. Mutlak sangat penting dari</option>
+                              </select>
+                              </td>
+                            </tr>
+                            <tr align="center">
+                              <td><?php echo $b4['alternatif1']; ?></td>
+                              <td><font color="red">0</font></td>
+                              <td><font color="red">0</font></td>
+                              <td><font color="red">0</font></td>
+                              <td><?php echo $b3['nb_db']; ?></td>
+                              <td>
+                                <select class="form-control" name="nb10">
+                                <option></option>
+                                <option value="1">1. Sama penting dengan</option>
+                                <option value="2">2. Mendekati sedikit lebih penting dari</option>
+                                <option value="3">3. Sedikit lebih penting dari</option>
+                                <option value="4">4. Mendekati lebih penting dari</option>
+                                <option value="5">5. Lebih penting dari</option>
+                                <option value="6">6. Mendekati sangat penting dari</option>
+                                <option value="7">7. Sangat penting dari</option>
+                                <option value="8">8. Mendekati mutlak dari</option>
+                                <option value="9">9. Mutlak sangat penting dari</option>
+                              </select>
+                              </td>
+                            </tr>
+                            <tr align="center">
+                              <td><?php echo $b5['alternatif1']; ?></td>
+                              <td><font color="red">0</font></td>
+                              <td><font color="red">0</font></td>
+                              <td><font color="red">0</font></td>
+                              <td><font color="red">0</font></td>
+                              <td><?php echo $b3['nb_db']; ?></td>
+                            </tr>
+    </tbody>
+  </table>
 
-    <tbody>
-        <tr>
-        <th><?php echo $b1['kriteria1']; ?></th> <!-- Baris Umur -->
-        <td align="center"><?php echo $b1['nilai_banding']; ?></td>
-        <td>
-        <select class="form-control" name="nm_banding1">
-        <option></option>
-        <option value="1">1. Sama penting dengan</option>
-        <option value="2">2. Mendekati sedikit lebih penting dari</option>
-        <option value="3">3. Sedikit lebih penting dari</option>
-        <option value="4">4. Mendekati lebih penting dari</option>
-        <option value="5">5. Lebih penting dari</option>
-        <option value="6">6. Mendekati sangat penting dari</option>
-        <option value="7">7. Sangat penting dari</option>
-        <option value="8">8. Mendekati mutlak dari</option>
-        <option value="9">9. Mutlak sangat penting dari</option>
-        </select>
-        </td>
-        <td>
-        <select class="form-control" name="nm_banding2">
-        <option></option>
-        <option value="1">1. Sama penting dengan</option>
-        <option value="2">2. Mendekati sedikit lebih penting dari</option>
-        <option value="3">3. Sedikit lebih penting dari</option>
-        <option value="4">4. Mendekati lebih penting dari</option>
-        <option value="5">5. Lebih penting dari</option>
-        <option value="6">6. Mendekati sangat penting dari</option>
-        <option value="7">7. Sangat penting dari</option>
-        <option value="8">8. Mendekati mutlak dari</option>
-        <option value="9">9. Mutlak sangat penting dari</option>
-        </select>
-        </td>
-        <td>
-        <select class="form-control" name="nm_banding3">
-        <option></option>
-        <option value="1">1. Sama penting dengan</option>
-        <option value="2">2. Mendekati sedikit lebih penting dari</option>
-        <option value="3">3. Sedikit lebih penting dari</option>
-        <option value="4">4. Mendekati lebih penting dari</option>
-        <option value="5">5. Lebih penting dari</option>
-        <option value="6">6. Mendekati sangat penting dari</option>
-        <option value="7">7. Sangat penting dari</option>
-        <option value="8">8. Mendekati mutlak dari</option>
-        <option value="9">9. Mutlak sangat penting dari</option>
-        </select>
-        </td>
-        </tr>
-
-        <tr>
-        <th><?php echo $b2['kriteria1']; ?></th> <!-- Baris IPK -->
-        <td align="center"><font color="red">0</font></td>
-        <td align="center"><?php echo $b2['nilai_banding']; ?></td>
-        <td>
-        <select class="form-control" name="nm_banding4">
-        <option></option>
-        <option value="1">1. Sama penting dengan</option>
-        <option value="2">2. Mendekati sedikit lebih penting dari</option>
-        <option value="3">3. Sedikit lebih penting dari</option>
-        <option value="4">4. Mendekati lebih penting dari</option>
-        <option value="5">5. Lebih penting dari</option>
-        <option value="6">6. Mendekati sangat penting dari</option>
-        <option value="7">7. Sangat penting dari</option>
-        <option value="8">8. Mendekati mutlak dari</option>
-        <option value="9">9. Mutlak sangat penting dari</option>
-        </select>
-        </td>
-        <td>
-        <select class="form-control" name="nm_banding5">
-        <option></option>
-        <option value="1">1. Sama penting dengan</option>
-        <option value="2">2. Mendekati sedikit lebih penting dari</option>
-        <option value="3">3. Sedikit lebih penting dari</option>
-        <option value="4">4. Mendekati lebih penting dari</option>
-        <option value="5">5. Lebih penting dari</option>
-        <option value="6">6. Mendekati sangat penting dari</option>
-        <option value="7">7. Sangat penting dari</option>
-        <option value="8">8. Mendekati mutlak dari</option>
-        <option value="9">9. Mutlak sangat penting dari</option>
-        </select>
-        </td>
-        </tr>
-
-        <tr>
-        <th><?php echo $b3['kriteria1']; ?></th> <!-- baris Penghasilan Orangtua -->
-        <td align="center"><font color="red">0</font></td>
-        <td align="center"><font color="red">0</font></td>
-        <td align="center"><?php echo $b3['nilai_banding']; ?></td>
-        <td>
-        <select class="form-control" name="nm_banding6">
-        <option></option>
-        <option value="1">1. Sama penting dengan</option>
-        <option value="2">2. Mendekati sedikit lebih penting dari</option>
-        <option value="3">3. Sedikit lebih penting dari</option>
-        <option value="4">4. Mendekati lebih penting dari</option>
-        <option value="5">5. Lebih penting dari</option>
-        <option value="6">6. Mendekati sangat penting dari</option>
-        <option value="7">7. Sangat penting dari</option>
-        <option value="8">8. Mendekati mutlak dari</option>
-        <option value="9">9. Mutlak sangat penting dari</option>
-        </select>
-        </td>
-        </tr>
-
-        <tr>
-        <th><?php echo $b4['kriteria1']; ?></th> <!-- baris semester -->
-        <td align="center"><font color="red">0</font></td>
-        <td align="center"><font color="red">0</font></td>
-        <td align="center"><font color="red">0</font></td>
-       <td colspan="3" align="center"><?php echo $b4['nilai_banding']; ?></td>
-        </tr>
+  <br>
+  
+  <table class="table table-striped jambo_table bulk_action">
+    <thead>
+    <tr align="center">
+                              <th scope="col">Kualitas</th>
+                              <td scope="col"><?php echo $b1['alternatif1']; ?></td>
+                              <td scope="col"><?php echo $b2['alternatif1']; ?></td>
+                              <td scope="col"><?php echo $b3['alternatif1']; ?></td>
+                              <td scope="col"><?php echo $b4['alternatif1']; ?></td>
+                              <td scope="col"><?php echo $b5['alternatif1']; ?></td>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr align="center">
+                              <td><?php echo $b1['alternatif1']; ?></td>
+                              <td><?php echo $b1['nb_db']; ?></td>
+                              <td>
+                                <select class="form-control" name="nb11">
+                                <option></option>
+                                <option value="1">1. Sama penting dengan</option>
+                                <option value="2">2. Mendekati sedikit lebih penting dari</option>
+                                <option value="3">3. Sedikit lebih penting dari</option>
+                                <option value="4">4. Mendekati lebih penting dari</option>
+                                <option value="5">5. Lebih penting dari</option>
+                                <option value="6">6. Mendekati sangat penting dari</option>
+                                <option value="7">7. Sangat penting dari</option>
+                                <option value="8">8. Mendekati mutlak dari</option>
+                                <option value="9">9. Mutlak sangat penting dari</option>
+                              </select>
+                              </td>
+                              <td>
+                                <select class="form-control" name="nb12">
+                                <option></option>
+                                <option value="1">1. Sama penting dengan</option>
+                                <option value="2">2. Mendekati sedikit lebih penting dari</option>
+                                <option value="3">3. Sedikit lebih penting dari</option>
+                                <option value="4">4. Mendekati lebih penting dari</option>
+                                <option value="5">5. Lebih penting dari</option>
+                                <option value="6">6. Mendekati sangat penting dari</option>
+                                <option value="7">7. Sangat penting dari</option>
+                                <option value="8">8. Mendekati mutlak dari</option>
+                                <option value="9">9. Mutlak sangat penting dari</option>
+                              </select>
+                              </td>
+                              <td>
+                                <select class="form-control" name="nb13">
+                                <option></option>
+                                <option value="1">1. Sama penting dengan</option>
+                                <option value="2">2. Mendekati sedikit lebih penting dari</option>
+                                <option value="3">3. Sedikit lebih penting dari</option>
+                                <option value="4">4. Mendekati lebih penting dari</option>
+                                <option value="5">5. Lebih penting dari</option>
+                                <option value="6">6. Mendekati sangat penting dari</option>
+                                <option value="7">7. Sangat penting dari</option>
+                                <option value="8">8. Mendekati mutlak dari</option>
+                                <option value="9">9. Mutlak sangat penting dari</option>
+                              </select>
+                              </td>
+                              <td>
+                                <select class="form-control" name="nb14">
+                                <option></option>
+                                <option value="1">1. Sama penting dengan</option>
+                                <option value="2">2. Mendekati sedikit lebih penting dari</option>
+                                <option value="3">3. Sedikit lebih penting dari</option>
+                                <option value="4">4. Mendekati lebih penting dari</option>
+                                <option value="5">5. Lebih penting dari</option>
+                                <option value="6">6. Mendekati sangat penting dari</option>
+                                <option value="7">7. Sangat penting dari</option>
+                                <option value="8">8. Mendekati mutlak dari</option>
+                                <option value="9">9. Mutlak sangat penting dari</option>
+                              </select>
+                              </td>
+                            </tr>
+                            <tr align="center">
+                              <td><?php echo $b2['alternatif1']; ?></td>
+                              <td><font color="red">0</font></td>
+                              <td><?php echo $b2['nb_db']; ?></td>
+                              <td>
+                                <select class="form-control" name="nb15">
+                                <option></option>
+                                <option value="1">1. Sama penting dengan</option>
+                                <option value="2">2. Mendekati sedikit lebih penting dari</option>
+                                <option value="3">3. Sedikit lebih penting dari</option>
+                                <option value="4">4. Mendekati lebih penting dari</option>
+                                <option value="5">5. Lebih penting dari</option>
+                                <option value="6">6. Mendekati sangat penting dari</option>
+                                <option value="7">7. Sangat penting dari</option>
+                                <option value="8">8. Mendekati mutlak dari</option>
+                                <option value="9">9. Mutlak sangat penting dari</option>
+                              </select>
+                              </td>
+                              <td>
+                                <select class="form-control" name="nb16">
+                                <option></option>
+                                <option value="1">1. Sama penting dengan</option>
+                                <option value="2">2. Mendekati sedikit lebih penting dari</option>
+                                <option value="3">3. Sedikit lebih penting dari</option>
+                                <option value="4">4. Mendekati lebih penting dari</option>
+                                <option value="5">5. Lebih penting dari</option>
+                                <option value="6">6. Mendekati sangat penting dari</option>
+                                <option value="7">7. Sangat penting dari</option>
+                                <option value="8">8. Mendekati mutlak dari</option>
+                                <option value="9">9. Mutlak sangat penting dari</option>
+                              </select>
+                              </td>
+                              <td>
+                                <select class="form-control" name="nb17">
+                                <option></option>
+                                <option value="1">1. Sama penting dengan</option>
+                                <option value="2">2. Mendekati sedikit lebih penting dari</option>
+                                <option value="3">3. Sedikit lebih penting dari</option>
+                                <option value="4">4. Mendekati lebih penting dari</option>
+                                <option value="5">5. Lebih penting dari</option>
+                                <option value="6">6. Mendekati sangat penting dari</option>
+                                <option value="7">7. Sangat penting dari</option>
+                                <option value="8">8. Mendekati mutlak dari</option>
+                                <option value="9">9. Mutlak sangat penting dari</option>
+                              </select>
+                              </td>
+                            </tr>
+                            <tr align="center">
+                              <td><?php echo $b3['alternatif1']; ?></td>
+                              <td><font color="red">0</font></td>
+                              <td><font color="red">0</font></td>
+                              <td><?php echo $b3['nb_db']; ?></td>
+                              <td>
+                                <select class="form-control" name="nb18">
+                                <option></option>
+                                <option value="1">1. Sama penting dengan</option>
+                                <option value="2">2. Mendekati sedikit lebih penting dari</option>
+                                <option value="3">3. Sedikit lebih penting dari</option>
+                                <option value="4">4. Mendekati lebih penting dari</option>
+                                <option value="5">5. Lebih penting dari</option>
+                                <option value="6">6. Mendekati sangat penting dari</option>
+                                <option value="7">7. Sangat penting dari</option>
+                                <option value="8">8. Mendekati mutlak dari</option>
+                                <option value="9">9. Mutlak sangat penting dari</option>
+                              </select>
+                              </td>
+                              <td>
+                                <select class="form-control" name="nb19">
+                                <option></option>
+                                <option value="1">1. Sama penting dengan</option>
+                                <option value="2">2. Mendekati sedikit lebih penting dari</option>
+                                <option value="3">3. Sedikit lebih penting dari</option>
+                                <option value="4">4. Mendekati lebih penting dari</option>
+                                <option value="5">5. Lebih penting dari</option>
+                                <option value="6">6. Mendekati sangat penting dari</option>
+                                <option value="7">7. Sangat penting dari</option>
+                                <option value="8">8. Mendekati mutlak dari</option>
+                                <option value="9">9. Mutlak sangat penting dari</option>
+                              </select>
+                              </td>
+                            </tr>
+                            <tr align="center">
+                              <td><?php echo $b4['alternatif1']; ?></td>
+                              <td><font color="red">0</font></td>
+                              <td><font color="red">0</font></td>
+                              <td><font color="red">0</font></td>
+                              <td><?php echo $b3['nb_db']; ?></td>
+                              <td>
+                                <select class="form-control" name="nb20">
+                                <option></option>
+                                <option value="1">1. Sama penting dengan</option>
+                                <option value="2">2. Mendekati sedikit lebih penting dari</option>
+                                <option value="3">3. Sedikit lebih penting dari</option>
+                                <option value="4">4. Mendekati lebih penting dari</option>
+                                <option value="5">5. Lebih penting dari</option>
+                                <option value="6">6. Mendekati sangat penting dari</option>
+                                <option value="7">7. Sangat penting dari</option>
+                                <option value="8">8. Mendekati mutlak dari</option>
+                                <option value="9">9. Mutlak sangat penting dari</option>
+                              </select>
+                              </td>
+                            </tr>
+                            <tr align="center">
+                              <td><?php echo $b5['alternatif1']; ?></td>
+                              <td><font color="red">0</font></td>
+                              <td><font color="red">0</font></td>
+                              <td><font color="red">0</font></td>
+                              <td><font color="red">0</font></td>
+                              <td><?php echo $b3['nb_db']; ?></td>
+                            </tr>
+    </tbody>
+  </table>
+  <br>
+  <table class="table table-striped jambo_table bulk_action">
+    <thead>
+    <tr align="center">
+                              <th scope="col">Lokasi</th>
+                              <td scope="col"><?php echo $b1['alternatif1']; ?></td>
+                              <td scope="col"><?php echo $b2['alternatif1']; ?></td>
+                              <td scope="col"><?php echo $b3['alternatif1']; ?></td>
+                              <td scope="col"><?php echo $b4['alternatif1']; ?></td>
+                              <td scope="col"><?php echo $b5['alternatif1']; ?></td>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr align="center">
+                              <td><?php echo $b1['alternatif1']; ?></td>
+                              <td><?php echo $b1['nb_db']; ?></td>
+                              <td>
+                                <select class="form-control" name="nb21">
+                                <option></option>
+                                <option value="1">1. Sama penting dengan</option>
+                                <option value="2">2. Mendekati sedikit lebih penting dari</option>
+                                <option value="3">3. Sedikit lebih penting dari</option>
+                                <option value="4">4. Mendekati lebih penting dari</option>
+                                <option value="5">5. Lebih penting dari</option>
+                                <option value="6">6. Mendekati sangat penting dari</option>
+                                <option value="7">7. Sangat penting dari</option>
+                                <option value="8">8. Mendekati mutlak dari</option>
+                                <option value="9">9. Mutlak sangat penting dari</option>
+                              </select>
+                              </td>
+                              <td>
+                                <select class="form-control" name="nb22">
+                                <option></option>
+                                <option value="1">1. Sama penting dengan</option>
+                                <option value="2">2. Mendekati sedikit lebih penting dari</option>
+                                <option value="3">3. Sedikit lebih penting dari</option>
+                                <option value="4">4. Mendekati lebih penting dari</option>
+                                <option value="5">5. Lebih penting dari</option>
+                                <option value="6">6. Mendekati sangat penting dari</option>
+                                <option value="7">7. Sangat penting dari</option>
+                                <option value="8">8. Mendekati mutlak dari</option>
+                                <option value="9">9. Mutlak sangat penting dari</option>
+                              </select>
+                              </td>
+                              <td>
+                                <select class="form-control" name="nb23">
+                                <option></option>
+                                <option value="1">1. Sama penting dengan</option>
+                                <option value="2">2. Mendekati sedikit lebih penting dari</option>
+                                <option value="3">3. Sedikit lebih penting dari</option>
+                                <option value="4">4. Mendekati lebih penting dari</option>
+                                <option value="5">5. Lebih penting dari</option>
+                                <option value="6">6. Mendekati sangat penting dari</option>
+                                <option value="7">7. Sangat penting dari</option>
+                                <option value="8">8. Mendekati mutlak dari</option>
+                                <option value="9">9. Mutlak sangat penting dari</option>
+                              </select>
+                              </td>
+                              <td>
+                                <select class="form-control" name="nb24">
+                                <option></option>
+                                <option value="1">1. Sama penting dengan</option>
+                                <option value="2">2. Mendekati sedikit lebih penting dari</option>
+                                <option value="3">3. Sedikit lebih penting dari</option>
+                                <option value="4">4. Mendekati lebih penting dari</option>
+                                <option value="5">5. Lebih penting dari</option>
+                                <option value="6">6. Mendekati sangat penting dari</option>
+                                <option value="7">7. Sangat penting dari</option>
+                                <option value="8">8. Mendekati mutlak dari</option>
+                                <option value="9">9. Mutlak sangat penting dari</option>
+                              </select>
+                              </td>
+                            </tr>
+                            <tr align="center">
+                              <td><?php echo $b2['alternatif1']; ?></td>
+                              <td><font color="red">0</font></td>
+                              <td><?php echo $b2['nb_db']; ?></td>
+                              <td>
+                                <select class="form-control" name="nb25">
+                                <option></option>
+                                <option value="1">1. Sama penting dengan</option>
+                                <option value="2">2. Mendekati sedikit lebih penting dari</option>
+                                <option value="3">3. Sedikit lebih penting dari</option>
+                                <option value="4">4. Mendekati lebih penting dari</option>
+                                <option value="5">5. Lebih penting dari</option>
+                                <option value="6">6. Mendekati sangat penting dari</option>
+                                <option value="7">7. Sangat penting dari</option>
+                                <option value="8">8. Mendekati mutlak dari</option>
+                                <option value="9">9. Mutlak sangat penting dari</option>
+                              </select>
+                              </td>
+                              <td>
+                                <select class="form-control" name="nb26">
+                                <option></option>
+                                <option value="1">1. Sama penting dengan</option>
+                                <option value="2">2. Mendekati sedikit lebih penting dari</option>
+                                <option value="3">3. Sedikit lebih penting dari</option>
+                                <option value="4">4. Mendekati lebih penting dari</option>
+                                <option value="5">5. Lebih penting dari</option>
+                                <option value="6">6. Mendekati sangat penting dari</option>
+                                <option value="7">7. Sangat penting dari</option>
+                                <option value="8">8. Mendekati mutlak dari</option>
+                                <option value="9">9. Mutlak sangat penting dari</option>
+                              </select>
+                              </td>
+                              <td>
+                                <select class="form-control" name="nb27">
+                                <option></option>
+                                <option value="1">1. Sama penting dengan</option>
+                                <option value="2">2. Mendekati sedikit lebih penting dari</option>
+                                <option value="3">3. Sedikit lebih penting dari</option>
+                                <option value="4">4. Mendekati lebih penting dari</option>
+                                <option value="5">5. Lebih penting dari</option>
+                                <option value="6">6. Mendekati sangat penting dari</option>
+                                <option value="7">7. Sangat penting dari</option>
+                                <option value="8">8. Mendekati mutlak dari</option>
+                                <option value="9">9. Mutlak sangat penting dari</option>
+                              </select>
+                              </td>
+                            </tr>
+                            <tr align="center">
+                              <td><?php echo $b3['alternatif1']; ?></td>
+                              <td><font color="red">0</font></td>
+                              <td><font color="red">0</font></td>
+                              <td><?php echo $b3['nb_db']; ?></td>
+                              <td>
+                                <select class="form-control" name="nb28">
+                                <option></option>
+                                <option value="1">1. Sama penting dengan</option>
+                                <option value="2">2. Mendekati sedikit lebih penting dari</option>
+                                <option value="3">3. Sedikit lebih penting dari</option>
+                                <option value="4">4. Mendekati lebih penting dari</option>
+                                <option value="5">5. Lebih penting dari</option>
+                                <option value="6">6. Mendekati sangat penting dari</option>
+                                <option value="7">7. Sangat penting dari</option>
+                                <option value="8">8. Mendekati mutlak dari</option>
+                                <option value="9">9. Mutlak sangat penting dari</option>
+                              </select>
+                              </td>
+                              <td>
+                                <select class="form-control" name="nb29">
+                                <option></option>
+                                <option value="1">1. Sama penting dengan</option>
+                                <option value="2">2. Mendekati sedikit lebih penting dari</option>
+                                <option value="3">3. Sedikit lebih penting dari</option>
+                                <option value="4">4. Mendekati lebih penting dari</option>
+                                <option value="5">5. Lebih penting dari</option>
+                                <option value="6">6. Mendekati sangat penting dari</option>
+                                <option value="7">7. Sangat penting dari</option>
+                                <option value="8">8. Mendekati mutlak dari</option>
+                                <option value="9">9. Mutlak sangat penting dari</option>
+                              </select>
+                              </td>
+                            </tr>
+                            <tr align="center">
+                              <td><?php echo $b4['alternatif1']; ?></td>
+                              <td><font color="red">0</font></td>
+                              <td><font color="red">0</font></td>
+                              <td><font color="red">0</font></td>
+                              <td><?php echo $b3['nb_db']; ?></td>
+                              <td>
+                                <select class="form-control" name="nb30">
+                                <option></option>
+                                <option value="1">1. Sama penting dengan</option>
+                                <option value="2">2. Mendekati sedikit lebih penting dari</option>
+                                <option value="3">3. Sedikit lebih penting dari</option>
+                                <option value="4">4. Mendekati lebih penting dari</option>
+                                <option value="5">5. Lebih penting dari</option>
+                                <option value="6">6. Mendekati sangat penting dari</option>
+                                <option value="7">7. Sangat penting dari</option>
+                                <option value="8">8. Mendekati mutlak dari</option>
+                                <option value="9">9. Mutlak sangat penting dari</option>
+                              </select>
+                              </td>
+                            </tr>
+                            <tr align="center">
+                              <td><?php echo $b5['alternatif1']; ?></td>
+                              <td><font color="red">0</font></td>
+                              <td><font color="red">0</font></td>
+                              <td><font color="red">0</font></td>
+                              <td><font color="red">0</font></td>
+                              <td><?php echo $b3['nb_db']; ?></td>
+                            </tr>
+    </tbody>
+  </table>
+  <br>
+  <table class="table table-striped jambo_table bulk_action">
+    <thead>
+    <tr align="center">
+                              <th scope="col">Fleksibilitas</th>
+                              <td scope="col"><?php echo $b1['alternatif1']; ?></td>
+                              <td scope="col"><?php echo $b2['alternatif1']; ?></td>
+                              <td scope="col"><?php echo $b3['alternatif1']; ?></td>
+                              <td scope="col"><?php echo $b4['alternatif1']; ?></td>
+                              <td scope="col"><?php echo $b5['alternatif1']; ?></td>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr align="center">
+                              <td><?php echo $b1['alternatif1']; ?></td>
+                              <td><?php echo $b1['nb_db']; ?></td>
+                              <td>
+                                <select class="form-control" name="nb31">
+                                <option></option>
+                                <option value="1">1. Sama penting dengan</option>
+                                <option value="2">2. Mendekati sedikit lebih penting dari</option>
+                                <option value="3">3. Sedikit lebih penting dari</option>
+                                <option value="4">4. Mendekati lebih penting dari</option>
+                                <option value="5">5. Lebih penting dari</option>
+                                <option value="6">6. Mendekati sangat penting dari</option>
+                                <option value="7">7. Sangat penting dari</option>
+                                <option value="8">8. Mendekati mutlak dari</option>
+                                <option value="9">9. Mutlak sangat penting dari</option>
+                              </select>
+                              </td>
+                              <td>
+                                <select class="form-control" name="nb32">
+                                <option></option>
+                                <option value="1">1. Sama penting dengan</option>
+                                <option value="2">2. Mendekati sedikit lebih penting dari</option>
+                                <option value="3">3. Sedikit lebih penting dari</option>
+                                <option value="4">4. Mendekati lebih penting dari</option>
+                                <option value="5">5. Lebih penting dari</option>
+                                <option value="6">6. Mendekati sangat penting dari</option>
+                                <option value="7">7. Sangat penting dari</option>
+                                <option value="8">8. Mendekati mutlak dari</option>
+                                <option value="9">9. Mutlak sangat penting dari</option>
+                              </select>
+                              </td>
+                              <td>
+                                <select class="form-control" name="nb33">
+                                <option></option>
+                                <option value="1">1. Sama penting dengan</option>
+                                <option value="2">2. Mendekati sedikit lebih penting dari</option>
+                                <option value="3">3. Sedikit lebih penting dari</option>
+                                <option value="4">4. Mendekati lebih penting dari</option>
+                                <option value="5">5. Lebih penting dari</option>
+                                <option value="6">6. Mendekati sangat penting dari</option>
+                                <option value="7">7. Sangat penting dari</option>
+                                <option value="8">8. Mendekati mutlak dari</option>
+                                <option value="9">9. Mutlak sangat penting dari</option>
+                              </select>
+                              </td>
+                              <td>
+                                <select class="form-control" name="nb34">
+                                <option></option>
+                                <option value="1">1. Sama penting dengan</option>
+                                <option value="2">2. Mendekati sedikit lebih penting dari</option>
+                                <option value="3">3. Sedikit lebih penting dari</option>
+                                <option value="4">4. Mendekati lebih penting dari</option>
+                                <option value="5">5. Lebih penting dari</option>
+                                <option value="6">6. Mendekati sangat penting dari</option>
+                                <option value="7">7. Sangat penting dari</option>
+                                <option value="8">8. Mendekati mutlak dari</option>
+                                <option value="9">9. Mutlak sangat penting dari</option>
+                              </select>
+                              </td>
+                            </tr>
+                            <tr align="center">
+                              <td><?php echo $b2['alternatif1']; ?></td>
+                              <td><font color="red">0</font></td>
+                              <td><?php echo $b2['nb_db']; ?></td>
+                              <td>
+                                <select class="form-control" name="nb35">
+                                <option></option>
+                                <option value="1">1. Sama penting dengan</option>
+                                <option value="2">2. Mendekati sedikit lebih penting dari</option>
+                                <option value="3">3. Sedikit lebih penting dari</option>
+                                <option value="4">4. Mendekati lebih penting dari</option>
+                                <option value="5">5. Lebih penting dari</option>
+                                <option value="6">6. Mendekati sangat penting dari</option>
+                                <option value="7">7. Sangat penting dari</option>
+                                <option value="8">8. Mendekati mutlak dari</option>
+                                <option value="9">9. Mutlak sangat penting dari</option>
+                              </select>
+                              </td>
+                              <td>
+                                <select class="form-control" name="nb36">
+                                <option></option>
+                                <option value="1">1. Sama penting dengan</option>
+                                <option value="2">2. Mendekati sedikit lebih penting dari</option>
+                                <option value="3">3. Sedikit lebih penting dari</option>
+                                <option value="4">4. Mendekati lebih penting dari</option>
+                                <option value="5">5. Lebih penting dari</option>
+                                <option value="6">6. Mendekati sangat penting dari</option>
+                                <option value="7">7. Sangat penting dari</option>
+                                <option value="8">8. Mendekati mutlak dari</option>
+                                <option value="9">9. Mutlak sangat penting dari</option>
+                              </select>
+                              </td>
+                              <td>
+                                <select class="form-control" name="nb37">
+                                <option></option>
+                                <option value="1">1. Sama penting dengan</option>
+                                <option value="2">2. Mendekati sedikit lebih penting dari</option>
+                                <option value="3">3. Sedikit lebih penting dari</option>
+                                <option value="4">4. Mendekati lebih penting dari</option>
+                                <option value="5">5. Lebih penting dari</option>
+                                <option value="6">6. Mendekati sangat penting dari</option>
+                                <option value="7">7. Sangat penting dari</option>
+                                <option value="8">8. Mendekati mutlak dari</option>
+                                <option value="9">9. Mutlak sangat penting dari</option>
+                              </select>
+                              </td>
+                            </tr>
+                            <tr align="center">
+                              <td><?php echo $b3['alternatif1']; ?></td>
+                              <td><font color="red">0</font></td>
+                              <td><font color="red">0</font></td>
+                              <td><?php echo $b3['nb_db']; ?></td>
+                              <td>
+                                <select class="form-control" name="nb38">
+                                <option></option>
+                                <option value="1">1. Sama penting dengan</option>
+                                <option value="2">2. Mendekati sedikit lebih penting dari</option>
+                                <option value="3">3. Sedikit lebih penting dari</option>
+                                <option value="4">4. Mendekati lebih penting dari</option>
+                                <option value="5">5. Lebih penting dari</option>
+                                <option value="6">6. Mendekati sangat penting dari</option>
+                                <option value="7">7. Sangat penting dari</option>
+                                <option value="8">8. Mendekati mutlak dari</option>
+                                <option value="9">9. Mutlak sangat penting dari</option>
+                              </select>
+                              </td>
+                              <td>
+                                <select class="form-control" name="nb39">
+                                <option></option>
+                                <option value="1">1. Sama penting dengan</option>
+                                <option value="2">2. Mendekati sedikit lebih penting dari</option>
+                                <option value="3">3. Sedikit lebih penting dari</option>
+                                <option value="4">4. Mendekati lebih penting dari</option>
+                                <option value="5">5. Lebih penting dari</option>
+                                <option value="6">6. Mendekati sangat penting dari</option>
+                                <option value="7">7. Sangat penting dari</option>
+                                <option value="8">8. Mendekati mutlak dari</option>
+                                <option value="9">9. Mutlak sangat penting dari</option>
+                              </select>
+                              </td>
+                            </tr>
+                            <tr align="center">
+                              <td><?php echo $b4['alternatif1']; ?></td>
+                              <td><font color="red">0</font></td>
+                              <td><font color="red">0</font></td>
+                              <td><font color="red">0</font></td>
+                              <td><?php echo $b3['nb_db']; ?></td>
+                              <td>
+                                <select class="form-control" name="nb40">
+                                <option></option>
+                                <option value="1">1. Sama penting dengan</option>
+                                <option value="2">2. Mendekati sedikit lebih penting dari</option>
+                                <option value="3">3. Sedikit lebih penting dari</option>
+                                <option value="4">4. Mendekati lebih penting dari</option>
+                                <option value="5">5. Lebih penting dari</option>
+                                <option value="6">6. Mendekati sangat penting dari</option>
+                                <option value="7">7. Sangat penting dari</option>
+                                <option value="8">8. Mendekati mutlak dari</option>
+                                <option value="9">9. Mutlak sangat penting dari</option>
+                              </select>
+                              </td>
+                            </tr>
+                            <tr align="center">
+                              <td><?php echo $b5['alternatif1']; ?></td>
+                              <td><font color="red">0</font></td>
+                              <td><font color="red">0</font></td>
+                              <td><font color="red">0</font></td>
+                              <td><font color="red">0</font></td>
+                              <td><?php echo $b3['nb_db']; ?></td>
+                            </tr>
     </tbody>
   </table>
   <div class="form-group">
