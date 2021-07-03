@@ -102,7 +102,7 @@ include ('include/head.php')
   <table class="table table-striped jambo_table bulk_action">
     <thead>
     <tr align="center">
-                              <th>Harga</th>
+                              <th>Kualitas</th>
                               <td><?php echo $b1['alternatif1']; ?></td>
                               <td><?php echo $b2['alternatif1']; ?></td>
                               <td><?php echo $b3['alternatif1']; ?></td>
@@ -289,7 +289,7 @@ include ('include/head.php')
   <table class="table table-striped jambo_table bulk_action">
     <thead>
     <tr align="center">
-                              <th scope="col">Kualitas</th>
+                              <th scope="col">Harga</th>
                               <td scope="col"><?php echo $b1['alternatif1']; ?></td>
                               <td scope="col"><?php echo $b2['alternatif1']; ?></td>
                               <td scope="col"><?php echo $b3['alternatif1']; ?></td>
